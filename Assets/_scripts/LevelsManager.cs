@@ -32,7 +32,7 @@ public class LevelsManager : MonoBehaviour
 	private void Awake ()
 	{
 		TotalLevels = LevelStartTimes.Length;
-		CurrentLevel = 1;
+		CurrentLevel = 0;
 	}
 
 	private void Start ()
@@ -42,9 +42,8 @@ public class LevelsManager : MonoBehaviour
 
 	private void Update ()
 	{
-		if (Time.timeSinceLevelLoad >= LevelStartTimes[CurrentLevel] && TotalLevels > CurrentLevel + 1) CurrentLevel++;
+		if (TotalLevels > CurrentLevel + 1 && Time.timeSinceLevelLoad >= LevelStartTimes[CurrentLevel + 1]) { CurrentLevel++; print(CurrentLevel + 1); }
 		spawnTimer += Time.deltaTime;
-
 	}
 
 	private IEnumerator Spawner ()
@@ -55,7 +54,7 @@ public class LevelsManager : MonoBehaviour
 			{
 				spawnTimer = 0;
 				currentSpawnTime = Random.Range(MinSpawnIntervals[CurrentLevel], MaxSpawnIntervals[CurrentLevel]);
-				BubblesManager.I.SpawnBubble();
+				BubblesManager.I.ActivateBubble();
 			}
 			yield return new WaitForSeconds(.1f);
 		}

@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BubblePrefab: {fileID: 100000, guid: acd84ece4e991b640b5b614da06045b0, type: 2}
+  BubblePoolCapacity: 50
 --- !u!4 &139072123
 Transform:
   m_ObjectHideFlags: 0
@@ -279,28 +280,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelStartTimes:
   - 1
-  - 5
   - 10
+  - 20
+  - 30
+  - 40
   MinSpawnIntervals:
-  - .512956262
-  - .400000006
-  - .25
-  MaxSpawnIntervals:
-  - 1.22080386
-  - .825000048
-  - .550000072
-  MinBubbleSizes:
-  - .699999928
-  - .447317511
+  - 2.04215264
+  - 1.69999993
+  - 1.15000057
+  - .571898341
   - .100000001
+  MaxSpawnIntervals:
+  - 4.0500021
+  - 3.5250001
+  - 2.87499976
+  - 2.29689741
+  - .149998993
+  MinBubbleSizes:
+  - .804999948
+  - .697317481
+  - .596259117
+  - .548083961
+  - .503083944
   MaxBubbleSizes:
   - 1
-  - .929817438
-  - .770000041
+  - .903321028
+  - .798905134
+  - .798905134
+  - .798905134
   BubbleSpeedFactors:
   - .100000001
-  - .197999999
-  - .300000012
+  - .149000004
+  - .199000001
+  - .248999998
+  - .298000008
   CurrentLevel: 0
 --- !u!4 &1525005958
 Transform:

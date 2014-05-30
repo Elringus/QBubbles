@@ -7,6 +7,7 @@ public class Bubble : MonoBehaviour
 	private GameObject myGameObject;
 	private Transform myTransform;
 	private Rigidbody2D myRigidbody;
+	private SpriteRenderer mySprite;
 	#endregion
 
 	private float _size;	// the size of the bubble
@@ -38,12 +39,9 @@ public class Bubble : MonoBehaviour
 		myGameObject = gameObject;
 		myTransform = transform;
 		myRigidbody = rigidbody2D;
-
-		size = Random.Range(LevelsManager.I.MinBubbleSizes[LevelsManager.I.CurrentLevel], LevelsManager.I.MaxBubbleSizes[LevelsManager.I.CurrentLevel]);
-		speed = LevelsManager.I.BubbleSpeedFactors[LevelsManager.I.CurrentLevel] / size;
-		points = (int)(speed * 10);
-
-		myTransform.position = GetSpawnPoint();
+		mySprite = renderer as SpriteRenderer;
+		
+		myGameObject.SetActive(false);
 	}
 
 	private void Update ()
@@ -51,15 +49,23 @@ public class Bubble : MonoBehaviour
 
 	}
 
+	// triggers when we clicked the bubble
 	private void OnMouseDown ()
 	{
+		// award the player points for this bubble
 		SGUI.I.Points += points;
-		Destroy(myGameObject);
+		// and send it to the inactive bubbles pool
+		BubblesManager.I.DeactivateBubble(myGameObject);
 	}
 
+	// triggers when we need to spawn a new bubble and this one was the chosen one by the BubbleManager
 	private void OnEnable ()
 	{
-		
+		size = Random.Range(LevelsManager.I.MinBubbleSizes[LevelsManager.I.CurrentLevel], LevelsManager.I.MaxBubbleSizes[LevelsManager.I.CurrentLevel]);
+		speed = LevelsManager.I.BubbleSpeedFactors[LevelsManager.I.CurrentLevel] / size;
+		points = (int)(speed * 10);
+
+		myTransform.position = GetSpawnPoint();
 	}
 
 	private void OnDisable ()
@@ -67,14 +73,17 @@ public class Bubble : MonoBehaviour
 		
 	}
 
+	// triggers when the bubble goes off main camera viewport (bubble falls under hor. border of the screen)
 	private void OnBecameInvisible ()
 	{
-		Destroy(myGameObject);
+		// returning bubble to the inactive pool
+		if (BubblesManager.I) BubblesManager.I.DeactivateBubble(myGameObject);
 	}
 
-	// TODO: check for near bubbles so it wont have a chance to collide with them
+	// calculating a random place to spawn bubble, so it will smoothly fall and won't go off vert. borders
 	private Vector3 GetSpawnPoint ()
 	{
-		return Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0 + size * 256 / 2, Screen.width - size * 256 / 2), Screen.height + size * 256 / 2, 10));
+		float spriteWidth = mySprite.sprite.textureRect.width;
+		return Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(0 + size * spriteWidth / 2, Screen.width - size * spriteWidth / 2), Screen.height + size * spriteWidth / 2, 10));
 	}
 }
