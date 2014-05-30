@@ -42,7 +42,11 @@ public class LevelsManager : MonoBehaviour
 
 	private void Update ()
 	{
-		if (TotalLevels > CurrentLevel + 1 && Time.timeSinceLevelLoad >= LevelStartTimes[CurrentLevel + 1]) { CurrentLevel++; print(CurrentLevel + 1); }
+		if (TotalLevels > CurrentLevel + 1 && Time.timeSinceLevelLoad >= LevelStartTimes[CurrentLevel + 1])
+		{
+			CurrentLevel++;
+			TexturesManager.I.GenerateTextures(CurrentLevel);
+		}
 		spawnTimer += Time.deltaTime;
 	}
 

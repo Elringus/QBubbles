@@ -251,6 +251,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Points: 0
+--- !u!1 &1325370457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1325370459}
+  - 114: {fileID: 1325370458}
+  m_Layer: 0
+  m_Name: _textures-manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1325370458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325370457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cfa0179a3dcbe4a9b209746f225a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texturesSet1: []
+  texturesSet2: []
+  texturesSet3: []
+--- !u!4 &1325370459
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325370457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1525005956
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,39 +323,39 @@ MonoBehaviour:
   LevelStartTimes:
   - 1
   - 10
-  - 20
   - 30
   - 40
+  - 60
   MinSpawnIntervals:
-  - 2.04215264
-  - 1.69999993
-  - 1.15000057
-  - .571898341
+  - .967152596
+  - .37499994
+  - .22500062
+  - .100000001
   - .100000001
   MaxSpawnIntervals:
-  - 4.0500021
-  - 3.5250001
-  - 2.87499976
-  - 2.29689741
+  - 2.97500181
+  - .924998164
+  - .674998999
+  - .449999124
   - .149998993
   MinBubbleSizes:
-  - .804999948
-  - .697317481
-  - .596259117
+  - .805000067
+  - .736496449
+  - .657353997
   - .548083961
-  - .503083944
+  - .445584059
   MaxBubbleSizes:
   - 1
-  - .903321028
-  - .798905134
-  - .798905134
-  - .798905134
+  - 1
+  - 1
+  - 1
+  - 1
   BubbleSpeedFactors:
-  - .100000001
   - .149000004
-  - .199000001
-  - .248999998
-  - .298000008
+  - .25
+  - .351999998
+  - .397000015
+  - .451999992
   CurrentLevel: 0
 --- !u!4 &1525005958
 Transform:

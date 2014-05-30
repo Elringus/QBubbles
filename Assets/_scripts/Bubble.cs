@@ -10,9 +10,10 @@ public class Bubble : MonoBehaviour
 	private SpriteRenderer mySprite;
 	#endregion
 
-	private float _size;	// the size of the bubble
-	private float _speed;	// the falling speed of the bubble
-	private int points;		// how much points player gets for clicking the bubble
+	private float _size;		// the size of the bubble
+	private float _speed;		// the falling speed of the bubble
+	private int points;			// how much points player gets for clicking the bubble
+	private float prevTexWidth; // for calculating collider size
 
 	private float size
 	{
@@ -65,12 +66,25 @@ public class Bubble : MonoBehaviour
 		speed = LevelsManager.I.BubbleSpeedFactors[LevelsManager.I.CurrentLevel] / size;
 		points = (int)(speed * 10);
 
+		Texture2D texture;
+		int rnd = Random.Range(1, 4);
+		switch (rnd)
+		{
+			case 1: texture = TexturesManager.I.texturesSet1[size > .85f ? 3 : size > .5f ? 2 : size > .25f ? 1 : 0]; break;
+			case 2: texture = TexturesManager.I.texturesSet2[size > .85f ? 3 : size > .5f ? 2 : size > .25f ? 1 : 0]; break;
+			case 3: texture = TexturesManager.I.texturesSet3[size > .85f ? 3 : size > .5f ? 2 : size > .25f ? 1 : 0]; break;
+			default: texture = new Texture2D(256, 256); break;
+		}
+		prevTexWidth = mySprite.sprite.texture.width;
+		mySprite.sprite = Sprite.Create(texture, new Rect(0, 0, 256, 256), new Vector2(.5f, .5f));
+		((CircleCollider2D)collider2D).radius *= mySprite.sprite.textureRect.width / prevTexWidth;
+
 		myTransform.position = GetSpawnPoint();
 	}
 
-	private void OnDisable ()
+	private void SetTexture ()
 	{
-		
+
 	}
 
 	// triggers when the bubble goes off main camera viewport (bubble falls under hor. border of the screen)
