@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad4ff99a2a3da245a4f580fc51ff257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BubblePrefab: {fileID: 100000, guid: acd84ece4e991b640b5b614da06045b0, type: 2}
   BubblePoolCapacity: 50
 --- !u!4 &139072123
 Transform:

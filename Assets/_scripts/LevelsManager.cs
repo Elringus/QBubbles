@@ -31,6 +31,8 @@ public class LevelsManager : MonoBehaviour
 
 	private void Awake ()
 	{
+		if (!GameObject.FindObjectOfType<AssetsManager>()) Application.LoadLevel(0);
+
 		TotalLevels = LevelStartTimes.Length;
 		CurrentLevel = 0;
 	}
