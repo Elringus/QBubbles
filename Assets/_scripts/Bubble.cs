@@ -41,7 +41,7 @@ public class Bubble : MonoBehaviour
 
 		size = Random.Range(LevelsManager.I.MinBubbleSizes[LevelsManager.I.CurrentLevel], LevelsManager.I.MaxBubbleSizes[LevelsManager.I.CurrentLevel]);
 		speed = LevelsManager.I.BubbleSpeedFactors[LevelsManager.I.CurrentLevel] / size;
-		points = (int)speed * 10;
+		points = (int)(speed * 10);
 
 		myTransform.position = GetSpawnPoint();
 	}
@@ -53,7 +53,7 @@ public class Bubble : MonoBehaviour
 
 	private void OnMouseDown ()
 	{
-		print("+points!");
+		SGUI.I.Points += points;
 		Destroy(myGameObject);
 	}
 
