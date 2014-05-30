@@ -30,7 +30,14 @@ public class SGUI : MonoBehaviour
 
 	private void OnGUI ()
 	{
-		GUI.Box(new Rect(0, Screen.height - 50, 120, 25), "Points: " + Points);
-		GUI.Box(new Rect(0, Screen.height - 25, 120, 25), "Timer: " + Time.timeSinceLevelLoad.ToString("F1"));
+		if (Application.loadedLevel == 0)
+		{
+			GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 12.5f, 300, 25), "Loading assets, please wait...");
+		}
+		else
+		{
+			GUI.Box(new Rect(0, Screen.height - 50, 120, 25), "Points: " + Points);
+			GUI.Box(new Rect(0, Screen.height - 25, 120, 25), "Timer: " + Time.timeSinceLevelLoad.ToString("F1"));
+		}
 	}
 }

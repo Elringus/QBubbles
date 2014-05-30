@@ -17,13 +17,14 @@ public class BubblesManager : MonoBehaviour
 	private void OnApplicationQuit () { _i = null; }
 	#endregion
 
-	public GameObject BubblePrefab;				// bubble prototype
+	private GameObject BubblePrefab;			// bubble prototype
 	public int BubblePoolCapacity;				// how many bubbles create at the start
 	private List<GameObject> activeBubbles;		// currently active bubbles (visible on screen)
 	private List<GameObject> inactiveBubbles;	// pool for inactive bubbles
 
 	private void Awake () 
 	{
+		BubblePrefab = AssetsManager.BubblePrefab;
 		activeBubbles = new List<GameObject>(BubblePoolCapacity);
 		inactiveBubbles = new List<GameObject>(BubblePoolCapacity);
 

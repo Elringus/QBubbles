@@ -5,6 +5,7 @@ public class Background : MonoBehaviour
 {
 	private void Awake () 
 	{
+		DontDestroyOnLoad(gameObject);
 		// scaling sprite so it will cover the entire screen
 		SpriteRenderer spr = renderer as SpriteRenderer;
 		float diff = Screen.height / spr.sprite.textureRect.height * 1.5f;

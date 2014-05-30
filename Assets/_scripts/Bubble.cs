@@ -45,16 +45,16 @@ public class Bubble : MonoBehaviour
 		myGameObject.SetActive(false);
 	}
 
-	private void Update ()
-	{
-
-	}
-
 	// triggers when we clicked the bubble
 	private void OnMouseDown ()
 	{
 		// award the player points for this bubble
 		SGUI.I.Points += points;
+		// play VFX
+		Destroy(GameObject.Instantiate(AssetsManager.VFXPrefab, myTransform.position, Quaternion.identity), 1);
+		// show points text
+		PointsText pointsText = ((GameObject)GameObject.Instantiate(AssetsManager.PointsPrefab)).GetComponent<PointsText>();
+		pointsText.Play("+" + points.ToString(), Camera.main.WorldToViewportPoint(myTransform.position));
 		// and send it to the inactive bubbles pool
 		BubblesManager.I.DeactivateBubble(myGameObject);
 	}
@@ -80,11 +80,6 @@ public class Bubble : MonoBehaviour
 		((CircleCollider2D)collider2D).radius *= mySprite.sprite.textureRect.width / prevTexWidth;
 
 		myTransform.position = GetSpawnPoint();
-	}
-
-	private void SetTexture ()
-	{
-
 	}
 
 	// triggers when the bubble goes off main camera viewport (bubble falls under hor. border of the screen)
