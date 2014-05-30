@@ -16,6 +16,7 @@ public class TexturesManager : MonoBehaviour
 	private void OnApplicationQuit () { _i = null; }
 	#endregion
 
+	// 3 sets of the textures for different types and sizes ([0] — 32, [1] — 64, [2] — 128, [3] — 256)
 	public Texture2D[] texturesSet1;
 	public Texture2D[] texturesSet2;
 	public Texture2D[] texturesSet3;
@@ -29,6 +30,7 @@ public class TexturesManager : MonoBehaviour
 		GenerateTextures(0);
 	}
 
+	// specifies what texture types would be used for different difficulty levels
 	public void GenerateTextures (int level)
 	{
 		switch (level)
@@ -100,6 +102,7 @@ public class TexturesManager : MonoBehaviour
 		}
 	}
 
+	// generates a circle texture for bubbles
 	private Texture2D DrawCircleTexture (int size, Color32 color, bool gradient)
 	{
 		Texture2D texture = new Texture2D(size, size, TextureFormat.ARGB32, false);

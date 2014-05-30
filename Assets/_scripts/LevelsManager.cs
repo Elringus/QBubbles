@@ -26,8 +26,8 @@ public class LevelsManager : MonoBehaviour
 	public int CurrentLevel;			// the current difficulty level running
 	private int TotalLevels;			// how many levels in total we have predefined (by the length of the levels parameter arrays)
 
-	private float spawnTimer;
-	private float currentSpawnTime;
+	private float spawnTimer;			// timer wich we use to determine if it is the time to spawn a bubble
+	private float currentSpawnTime;		// assigned at the spawn-time of the bubble 
 
 	private void Awake ()
 	{
@@ -42,6 +42,7 @@ public class LevelsManager : MonoBehaviour
 
 	private void Update ()
 	{
+		// switching difficulty levels and generating texures 
 		if (TotalLevels > CurrentLevel + 1 && Time.timeSinceLevelLoad >= LevelStartTimes[CurrentLevel + 1])
 		{
 			CurrentLevel++;

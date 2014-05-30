@@ -16,6 +16,7 @@ public class PointsText : MonoBehaviour
 
 	private void Update ()
 	{
+		// making the text to float and change opacity over time
 		if (playing)
 		{
 			myTransform.Translate(new Vector3(Time.deltaTime / 25, Time.deltaTime / 5));
@@ -23,6 +24,7 @@ public class PointsText : MonoBehaviour
 		}
 	}
 
+	// called by the bubble when we clicked him — assigns coords and starts the animation
 	public void Play (string points, Vector3 position)
 	{
 		myTransform.position = position;

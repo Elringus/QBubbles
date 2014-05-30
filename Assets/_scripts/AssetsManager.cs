@@ -4,14 +4,15 @@ using System;
 
 public class AssetsManager : MonoBehaviour
 {
-	public static GameObject BubblePrefab;
-	public static GameObject VFXPrefab;
-	public static GameObject PointsPrefab;
+	public static GameObject BubblePrefab;	// prefab for bubbles
+	public static GameObject VFXPrefab;		// prefab for particle effect on bubble click
+	public static GameObject PointsPrefab;	// prefab for flaoting GuiTexture show how much points we got for clicking the bubble
 
 	private void Start () 
 	{
+		// we will reference it in the next scene, so keep it
 		DontDestroyOnLoad(gameObject);
-		// load background from asset bundle 
+		// load asset bundle
 		StartCoroutine(DownloadAsset("file://" + Application.dataPath + "/AssetBundles/bundle.unity3d"));
 	}
 

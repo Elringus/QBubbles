@@ -4,6 +4,7 @@ using System.Collections;
 public class Bubble : MonoBehaviour
 {
 	#region CACHED_VARS
+	// using cached vars so we won't have to call GetComponent() every frame
 	private GameObject myGameObject;
 	private Transform myTransform;
 	private Rigidbody2D myRigidbody;
@@ -42,6 +43,7 @@ public class Bubble : MonoBehaviour
 		myRigidbody = rigidbody2D;
 		mySprite = renderer as SpriteRenderer;
 		
+		// many bubbles created at the start for pooling, so we need to disable them for now
 		myGameObject.SetActive(false);
 	}
 
@@ -66,6 +68,7 @@ public class Bubble : MonoBehaviour
 		speed = LevelsManager.I.BubbleSpeedFactors[LevelsManager.I.CurrentLevel] / size;
 		points = (int)(speed * 10);
 
+		// assigning a random texture for the bubble
 		Texture2D texture;
 		int rnd = Random.Range(1, 4);
 		switch (rnd)
@@ -75,6 +78,7 @@ public class Bubble : MonoBehaviour
 			case 3: texture = TexturesManager.I.texturesSet3[size > .85f ? 3 : size > .5f ? 2 : size > .25f ? 1 : 0]; break;
 			default: texture = new Texture2D(256, 256); break;
 		}
+		// calculating new collider size
 		prevTexWidth = mySprite.sprite.texture.width;
 		mySprite.sprite = Sprite.Create(texture, new Rect(0, 0, 256, 256), new Vector2(.5f, .5f));
 		((CircleCollider2D)collider2D).radius *= mySprite.sprite.textureRect.width / prevTexWidth;

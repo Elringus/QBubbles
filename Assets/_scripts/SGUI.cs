@@ -18,22 +18,14 @@ public class SGUI : MonoBehaviour
 
 	public int Points;
 
-	private void Awake () 
-	{
-    	
-	}
-
-	private void Update () 
-	{
-    	
-	}
-
 	private void OnGUI ()
 	{
+		// shown on the start scene when loading asset bundles
 		if (Application.loadedLevel == 0)
 		{
 			GUI.Box(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 12.5f, 300, 25), "Loading assets, please wait...");
 		}
+		// shown in the game
 		else
 		{
 			GUI.Box(new Rect(0, Screen.height - 50, 120, 25), "Points: " + Points);
